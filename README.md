@@ -205,6 +205,69 @@ MIT License — free for personal and commercial use.
 
 ---
 
+## 🎬 Demo
+
+### Video Walkthrough
+
+A browser recording walkthrough of the live SwarmFi Perps dashboard is available in `public/demo/`:
+
+| File | Description | Duration |
+|------|-------------|----------|
+| `demo-ai-clips.mp4` | AI-generated intro + agent swarm visualization | 10s |
+| `swarmfi-demo-walkthrough.webm` | Full browser walkthrough with interactions | 35s |
+| `clip-01-intro.mp4` | AI-generated intro (fintech hexagonal animation) | 5s |
+| `clip-02-agents.mp4` | AI-generated agent node visualization | 5s |
+| `screenshot-01-splash.png` | App splash screen | — |
+| `screenshot-02-dashboard.png` | Dashboard overview | — |
+| `screenshot-03-charts.png` | Price & funding charts | — |
+| `screenshot-04-consensus.png` | Consensus signal view | — |
+
+### Quick Start Guide
+
+1. `bun install` → Install dependencies
+2. `bun run db:push` → Initialize database
+3. `bun run dev` → Start the dev server
+4. Open `http://localhost:3000` → Watch splash animation
+5. Select a market (BTC-USD, ETH-USD, SOL-USD) from dropdown
+6. Click **Run Swarm** → Watch 9 agents analyze and reach consensus
+7. Explore: Agent grid, price charts, orderbook, funding history
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+```bash
+npx vercel
+```
+
+### Deploy with Docker
+
+```dockerfile
+FROM oven/bun:1 AS installer
+WORKDIR /app
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
+
+FROM oven/bun:1 AS builder
+WORKDIR /app
+COPY --from=installer /app/node_modules ./node_modules
+COPY . .
+RUN bun run db:generate
+RUN bun run build
+
+FROM oven/bun:1 AS runner
+WORKDIR /app
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
+ENV DATABASE_URL="file:/app/data/dev.db"
+ENV PORT=3000
+EXPOSE 3000
+CMD ["bun", "run", "start"]
+```
+
+---
+
 ## 👤 Author
 
 Built by **[zan-maker](https://github.com/zan-maker)** — CFO by day, vibe coder and claw fan by night.
