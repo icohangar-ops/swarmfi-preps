@@ -207,20 +207,39 @@ MIT License — free for personal and commercial use.
 
 ## 🎬 Demo
 
-### Video Walkthrough
+### Full Hackathon Presentation (3:06)
 
-A browser recording walkthrough of the live SwarmFi Perps dashboard is available in `public/demo/`:
+The complete demo video walks through the entire SwarmFi Perps platform — from problem statement to live dashboard:
 
-| File | Description | Duration |
-|------|-------------|----------|
-| `demo-ai-clips.mp4` | AI-generated intro + agent swarm visualization | 10s |
-| `swarmfi-demo-walkthrough.webm` | Full browser walkthrough with interactions | 35s |
-| `clip-01-intro.mp4` | AI-generated intro (fintech hexagonal animation) | 5s |
-| `clip-02-agents.mp4` | AI-generated agent node visualization | 5s |
-| `screenshot-01-splash.png` | App splash screen | — |
-| `screenshot-02-dashboard.png` | Dashboard overview | — |
-| `screenshot-03-charts.png` | Price & funding charts | — |
-| `screenshot-04-consensus.png` | Consensus signal view | — |
+**[`swarmfi-perps-demo.mp4`](public/demo/swarmfi-perps-demo.mp4)** — 3:06 | 1080p | H.264
+
+Video sections:
+- **0:00** Title — SwarmFi Perps introduction
+- **0:06** Problem — Hyperliquid US-blocking and market gap
+- **0:20** dYdX vs Hyperliquid — API capability comparison
+- **0:32** Solution — Architecture and stigmergic agents
+- **0:51** The 9 Agents — Specialized analysis with weights
+- **1:08** How It Works — Step-by-step flow
+- **1:20** dYdX v4 Indexer API — Data source capabilities
+- **1:32** Live Dashboard — Screenshots of splash, dashboard, charts, consensus
+- **2:02** Signal Features — Auto-refresh, history, per-agent breakdown
+- **2:14** Tech Stack — Next.js, TypeScript, Tailwind, Zustand, dYdX
+- **2:28** Future Roadmap — WebSocket, arbitrage, backtesting, mobile, bots
+- **2:50** Getting Started — Clone, install, run
+- **3:00** Outro — GitHub link
+
+### Additional Assets
+
+| File | Description |
+|------|-------------|
+| `screenshot-01-splash.png` | App splash screen |
+| `screenshot-02-dashboard.png` | Dashboard overview |
+| `screenshot-03-charts.png` | Price & funding charts |
+| `screenshot-04-consensus.png` | Consensus signal view |
+| `clip-01-intro.mp4` | AI-generated intro animation |
+| `clip-02-agents.mp4` | AI-generated agent visualization |
+| `demo-ai-clips.mp4` | Combined AI clips |
+| `swarmfi-demo-walkthrough.webm` | Browser walkthrough recording |
 
 ### Quick Start Guide
 
