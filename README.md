@@ -1,5 +1,11 @@
 # 🐝 SwarmFi Perps — AI Agent Swarm Trading Signals
 
+
+## Demo
+
+https://github.com/user-attachments/assets/demo.mp4
+
+> _Generated with [demo-video-generator](https://github.com/zan-maker/demo-video-generator)_
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://typescriptlang.org/)
 [![dYdX](https://img.shields.io/badge/dYdX-v4-6967FF?logo=dydx)](https://dydx.exchange/)
