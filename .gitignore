@@ -51,3 +51,7 @@ search_*.json
 next-env.d.ts
 .vercel
 download/
+
+# CHP session artifacts (local only)
+.chp_registry.json
+.chp/sessions/
