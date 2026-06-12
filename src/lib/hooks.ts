@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useCallback, useRef } from 'react';
-import { useSwarmStore } from '@/lib/store';
+import { useSwarmStore, type CandleData } from '@/lib/store';
 
 const API_BASE = '/api';
 
@@ -246,7 +246,7 @@ function rand(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-function pick<T>(arr: T[]): T {
+function pick<T>(arr: readonly T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
@@ -342,14 +342,14 @@ export function generateMockTrades() {
   return Array.from({ length: 30 }, (_, i) => ({
     price: midPrice + rand(-100, 100),
     size: rand(0.001, 3),
-    side: Math.random() > 0.5 ? 'BUY' : 'SELL',
+    side: Math.random() > 0.5 ? ('BUY' as const) : ('SELL' as const),
     timestamp: new Date(Date.now() - i * rand(2000, 30000)).toISOString(),
   }));
 }
 
 export function generateMockCandles() {
   const basePrice = rand(64000, 68000);
-  const candles = [];
+  const candles: CandleData[] = [];
   let price = basePrice;
   for (let i = 24; i >= 0; i--) {
     const open = price;

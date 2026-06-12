@@ -20,7 +20,7 @@ export interface ConsensusResult {
   confidence: number; // 0-100
   agentVotes: AgentVote[];
   timestamp: number;
-  stigmergyBoard: Record<string, unknown>;
+  stigmergyBoard: Partial<StigmergyBoard>;
 }
 
 /** Market data blob passed to every agent */

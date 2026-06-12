@@ -64,10 +64,10 @@ export function fundingAgent(data: MarketDataBundle): AgentVote {
   let consecutivePositive = 0;
   let consecutiveNegative = 0;
   for (const r of rates) {
-    if (parseFloat(r.rate) > 0) {
+    if (r > 0) {
       consecutiveNegative = 0;
       consecutivePositive++;
-    } else if (parseFloat(r.rate) < 0) {
+    } else if (r < 0) {
       consecutivePositive = 0;
       consecutiveNegative++;
     } else {
