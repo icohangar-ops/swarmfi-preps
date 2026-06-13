@@ -30,6 +30,9 @@ model AgentState {
   lastVote  String   // "LONG", "SHORT", "NEUTRAL"
   score     Float
   timestamp DateTime @default(now())
+
+  // Prevent race-condition duplicates: one state row per (agentType, market).
+  @@unique([agentType, market])
 }
 
 model MarketSnapshot {

@@ -5,6 +5,8 @@
  * No authentication required — all endpoints are read-only.
  */
 
+import { safeFetch } from "./resilience/index.js";
+
 const DYDX_INDEXER = "https://indexer.v4prod.dydx.exchange";
 
 // ── Response Types ──────────────────────────────────────────────
@@ -110,10 +112,14 @@ export interface HeightResponse {
 
 async function dydxFetch<T>(endpoint: string): Promise<T> {
   const url = `${DYDX_INDEXER}${endpoint}`;
-  const res = await fetch(url, {
+  // Per-attempt 8s timeout (AbortController) + retry/backoff on 429/5xx and
+  // network errors. Preserves the Next.js 10s revalidate cache behavior.
+  const res = await safeFetch(url, {
+    timeoutMs: 8000,
+    // `next` is a Next.js fetch extension; passed straight through to fetch.
     next: { revalidate: 10 }, // cache for 10s
     headers: { Accept: "application/json" },
-  });
+  } as Parameters<typeof safeFetch>[1]);
 
   if (!res.ok) {
     const body = await res.text().catch(() => "");
